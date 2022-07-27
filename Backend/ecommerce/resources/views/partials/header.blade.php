@@ -64,7 +64,8 @@
             </div>
             <!-- Profile ended-->
             <div class="icon cart">
-                <a href="/cart">
+                <a href="{{ route('cartIndex') }}">
+                    <span class="count">{{ count($count_cart) }}</span>
                     <img src="/images/icon-cart.svg" alt="cart icon" width="30" height="30" />
                 </a>
             </div>
