@@ -192,6 +192,26 @@ button {
     }
 }
 
+.alert {
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    line-height: 2.4em;
+
+    &.alert-success {
+        background-color: $color-success;
+    }
+
+    &.alert-danger {
+        background-color: $color-error;
+        color:#fff;
+    }
+}
+
 .container {
     margin-bottom: 60px;
 }
