@@ -43,7 +43,7 @@ function menuMobileControl() {
 
     $('.nav_bar .menu .mobile_close_btn, .nav_bar .black_layer').click(function(e) {
         e.preventDefault();
-        $('.nav_bar .menu').animate({left: -400}, 500);
+        $('.nav_bar .menu').animate({left: -420}, 500);
         $('.nav_bar .black_layer').fadeOut();
     })
 
