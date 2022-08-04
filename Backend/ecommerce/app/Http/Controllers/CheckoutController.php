@@ -180,7 +180,7 @@ class CheckoutController extends Controller
         $selected_address_id = $request->input('address_item_id');
         session(['shipping_addr_id' => $selected_address_id]);
 
-        return redirect()->route('checkoutCart');
+        return back()->withSuccess('Shipping address updated successfully!');
     }
 
     /**

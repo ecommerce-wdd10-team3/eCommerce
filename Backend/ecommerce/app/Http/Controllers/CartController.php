@@ -73,6 +73,8 @@ class CartController extends Controller
 
         $prev_url = url()->previous();
 
+        session()->flash('success', 'Item is added to cart successfully!');
+
         return redirect($prev_url);
     }
 
@@ -92,16 +94,20 @@ class CartController extends Controller
             switch($action) {
                 case 'plus':
                     $session[$id] = $session[$id] + 1;
+                    session()->flash('success', 'Item quantity is increased successfully!');
                     break;
                 case 'minus':
                     if($session[$id] == 1) {
                         unset($session[$id]);
+                        session()->flash('success', 'Item is removed from cart successfully!');
                     } else {
                         $session[$id] = $session[$id] - 1;
+                        session()->flash('success', 'Item quantity is decreased successfully!');
                     }
                     break;
                 case 'delete':
                     unset($session[$id]);
+                    session()->flash('success', 'Item is remove from cart successfully!');
                     break;
             }
             $request->session()->put('cart', $session);
@@ -110,6 +116,4 @@ class CartController extends Controller
         return redirect()->route('cartIndex');
     }
 
-
-    
 }

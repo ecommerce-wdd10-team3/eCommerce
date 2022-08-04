@@ -11,6 +11,9 @@
 
     .cart_list {
         margin-right: 80px;
+        @media only screen and (max-width: 998px) {
+            margin-right: 20px;
+        }
         
         .empty_cart {
             text-align: center;
@@ -147,6 +150,10 @@
     .cart_info {
         border: 1px solid $color-light;
         padding: 10px 30px 30px;
+
+        @media only screen and (max-width: 998px) {
+            margin-right: 20px;
+        }
 
         > div {
             margin-bottom: 20px;
