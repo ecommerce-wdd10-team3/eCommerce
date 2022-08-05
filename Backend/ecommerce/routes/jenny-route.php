@@ -12,7 +12,9 @@ Route::get('/cart/edit', [CartController::class, 'edit'])->name('updateCart');
 
 
 Route::middleware(['auth'])->group(function () {
-
+    /**
+     *  Cart and checkout routes
+     */
     Route::get('/cart/checkout', [CheckoutController::class, 'checkoutCart'])->name('checkoutCart');
     Route::get('/cart/address/update', [CheckoutController::class, 'updateShippingAddress'])->name('updateShippingAddress');
     Route::get('/cart/billing', [CheckoutController::class, 'processToBilling'])->name('processToBilling');
