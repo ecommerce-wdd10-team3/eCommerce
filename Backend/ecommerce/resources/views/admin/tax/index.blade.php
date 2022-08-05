@@ -6,7 +6,7 @@
 
         <div class="d-flex my-auto">
             <!-- add tax -->
-            <a href="{{ route('adminTaxCreate') }}" class="btn btn-secondary mx-2">Add Tax</a></td>
+            <a href="{{ route('adminTaxCreate') }}" class="btn btn-secondary mx-2">Add Tax</a>
 
             <!-- Search form -->
             <div class="search_form">
@@ -45,7 +45,7 @@
             </thead>
             <tbody>
                 @foreach ($taxes as $tax)
-                    <tr scope="row">
+                    <tr>
                         <td>{{ $tax->id }}</td>
                         <td>{{ $tax->province }}</td>
                         <td>{{ $tax->province_short }}</td>

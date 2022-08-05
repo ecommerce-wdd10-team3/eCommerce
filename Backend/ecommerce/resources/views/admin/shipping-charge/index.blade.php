@@ -6,7 +6,7 @@
 
         <div class="d-flex my-auto">
             <!-- add shiping charge -->
-            <a href="/admin/shipping-charge/create" class="btn btn-secondary mx-2">Add Shiping Charge</a></td>
+            <a href="/admin/shipping-charge/create" class="btn btn-secondary mx-2">Add Shiping Charge</a>
 
             <!-- Search form -->
             <div class="search_form">
@@ -43,7 +43,7 @@
             </thead>
             <tbody>
                 @foreach ($shippingcharges as $shippingcharge)
-                    <tr scope="row">
+                    <tr>
                         <td>{{ $shippingcharge->id }}</td>
                         <td>{{ $shippingcharge->continent }}</td>
                         <td>{{ $shippingcharge->country }}</td>
