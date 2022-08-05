@@ -27,8 +27,8 @@
                     <div>
                         <form action="{{ route('useShippingAsBilling') }}">
                             @csrf
-                            <input type="checkbox" name="shipping_as_billing" id="terms" onChange="this.form.submit();"
-                                @if (!empty($billing_address)) checked @endif />
+                            <input type="checkbox" name="shipping_as_billing" id="shipping_as_billing"
+                                onChange="this.form.submit();" @if (!empty($billing_address)) checked @endif />
                             <label for="shipping_as_billing">Use the shipping address as billing address.</label>
                         </form>
                     </div>

@@ -24,6 +24,9 @@
                     <img src="/images/icon-profile.svg" alt="profile icon" width="30" height="30" />
                 </a>
                 <div class="profile_dropdown">
+                    <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                     <ul>
                         @guest
 
@@ -45,9 +48,7 @@
                                 <a class="btn btn_white_no_border" href="{{ route('profile') }}">Profile</a>
                             </li>
 
-                            <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+
                             <li>
                                 <a class="btn btn_black" href="/logout"
                                     onclick="event.preventDefault();
@@ -119,6 +120,10 @@
                         <img src="/images/icon-profile.svg" alt="profile icon" width="30" height="30" />
                     </a>
                     <div class="profile_dropdown">
+                        <form id="logout-form-desktop" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
                         <ul>
                             @guest
 
@@ -139,17 +144,19 @@
                                 <li>
                                     <a class="btn btn_white_no_border" href="{{ route('profile') }}">Profile</a>
                                 </li>
-
-                                <form id="logout-form-desktop" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
+                                <<<<<<< HEAD <form id="logout-form-desktop" action="{{ route('logout') }}"
+                                    method="POST" class="d-none">
                                     @csrf
-                                </form>
-                                <li>
-                                    <a class="btn btn_black" href="/logout"
-                                        onclick="event.preventDefault();
+                                    </form>
+                                    =======
+
+                                    >>>>>>> f88e3f0ded1d57a9f0450bf765d9add988c88530
+                                    <li>
+                                        <a class="btn btn_black" href="/logout"
+                                            onclick="event.preventDefault();
                                     document.getElementById('logout-form-desktop').submit();">Logout</a>
-                                </li>
-                            @endguest
+                                    </li>
+                                @endguest
 
                         </ul>
                     </div>
