@@ -240,7 +240,7 @@
                             </span>&#42;&#42;&#42;&#42;&#42;{{ $transaction->credit_card_info }}</div>
                     </div>
                 </div>
-                <div class="product_list overflow-x-scroll">
+                <div class="product_list">
                     <table style="border-collapse: collapse" class="">
                         <thead>
                             <tr>

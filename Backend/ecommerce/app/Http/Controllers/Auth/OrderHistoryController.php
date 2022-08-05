@@ -33,18 +33,7 @@ class OrderHistoryController extends Controller
         $title = "Order History";
 
         $orders = Auth::user()->orders;
-        // foreach ($orders as $key => $order) {
 
-        //     $products = $order->products;
-        //     foreach ($products as $key => $product) {
-        //         echo $product->pivot->quantity;
-        //         echo $product->size->name;
-        //         echo '<br>--------------------<br>';
-        //     }
-        // }
-        // var_dump($orders);
-        // session()->flash('success', 'Test Flash Message. Test Flash Message.');
-        // session()->flash('error', 'Test Flash Message. Test Flash Message.');
         return view('auth.order_history.index', compact('title', 'orders'));
     }
 

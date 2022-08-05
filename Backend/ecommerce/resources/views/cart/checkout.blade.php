@@ -154,7 +154,7 @@
                 @endforeach
             </div>
 
-            <div class="cart_info col col-3">
+            <div class="cart_info col">
                 <h2>Summary</h2>
                 <div class="subtotal"><strong>Subtotal: </strong>${{ $subtotal }} CAD</div>
                 <div class="total_item"><strong>Items: </strong>{{ $total_qty }}</div>

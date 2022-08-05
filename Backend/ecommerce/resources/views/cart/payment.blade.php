@@ -8,7 +8,7 @@
         <p>Please fill in the <strong>credit card information</strong>.</p>
 
         <div class="content form payment">
-            <div class="cart_list col col-12">
+            <div class="cart_list address_info col">
                 <h2>Order Information</h2>
                 <div class="order_info">
                     <div class="user">

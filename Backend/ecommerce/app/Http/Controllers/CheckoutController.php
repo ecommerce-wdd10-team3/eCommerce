@@ -24,18 +24,19 @@ class CheckoutController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function checkoutCart(Request $request) {
+    public function checkoutCart(Request $request)
+    {
 
         $title = 'Checkout';
 
-        if(Auth::check()) {
+        if (Auth::check()) {
 
             // check if user just submit the create address form and validation failed
             // if validatation failed, and user route back to the checkout again, the create address form should remain opened
             $expend_create_addr_form = false;
             $route_from_address_create = $request->session()->get('addr_store_form') ?? null;
 
-            if($route_from_address_create) {
+            if ($route_from_address_create) {
                 $expend_create_addr_form = true;
                 $request->session()->forget('addr_store_form');
             }
@@ -62,10 +63,10 @@ class CheckoutController extends Controller
             $shipping_fee = 0;
             $total = 0;
 
-            if($session_address_id) {
+            if ($session_address_id) {
                 // if user chosse other shipping address rather than default address
                 $selected_address_id = intval($session_address_id);
-                $user_address = UserAddress::find( $session_address_id);
+                $user_address = UserAddress::find($session_address_id);
                 $default_address = $user_address->full_address() . ', ' . $user_address->user_postal_code();
                 // For summary
                 $country = strtolower($user_address->user_country());
@@ -73,18 +74,18 @@ class CheckoutController extends Controller
             } else {
                 // If user is not choosing other address, default will be selected
                 $selected_address_id = $user->default_address_id;
-                $user_address = UserAddress::find( $selected_address_id);
+                $user_address = UserAddress::find($selected_address_id);
                 $default_address = $user_address->full_address() . ', ' . $user_address->user_postal_code();
                 // For summary
                 $country = strtolower($user_address->user_country());
                 $province = strtolower($user_address->user_province());
             }
 
-            if($session_cart) {
+            if ($session_cart) {
                 $products = Product::whereIn('id', array_keys($session_cart))->with('size')->get();
 
                 // For Summary
-                foreach($products as $product) {
+                foreach ($products as $product) {
                     // calc cart summary
                     $subtotal +=
                         floatval($product->price) * $session_cart[$product->id];
@@ -92,17 +93,17 @@ class CheckoutController extends Controller
                 }
 
                 // taxes and shipping fee logic
-                if($country == 'canada') {
+                if ($country == 'canada') {
                     // Tax fee
                     $taxes = Tax::where('province', $province)
-                            ->orWhere('province_short', $province)
-                            ->whereNull('deleted_at')
-                            ->first(['gst', 'pst', 'hst']);
+                        ->orWhere('province_short', $province)
+                        ->whereNull('deleted_at')
+                        ->first(['gst', 'pst', 'hst']);
 
-                    if($taxes) {
+                    if ($taxes) {
                         // apply tax when province could be found in database
                         $taxes = $taxes->toArray();
-                        foreach($taxes as $tax) {
+                        foreach ($taxes as $tax) {
                             $taxes_total += floatval($tax) * $subtotal;
                         }
                     } else {
@@ -118,7 +119,6 @@ class CheckoutController extends Controller
                     $shipping_fee = ShippingCharge::where('country', $country)->first()->charge;
                     $free_shipping_amount = 80;
                     $shipping_fee = $subtotal > $free_shipping_amount ? 0 : floatval($shipping_fee);
-
                 } else {
                     // international shipping fee
                     $shipping_fee = ShippingCharge::where('country', 'Overseas')->first()->charge;
@@ -130,8 +130,8 @@ class CheckoutController extends Controller
                 $total =  number_format($subtotal + $taxes_total + $shipping_fee, 2);
             }
 
-             // save to session to display the summary in the following steps(pages)
-             // and store the summary in database when order is placed successfully
+            // save to session to display the summary in the following steps(pages)
+            // and store the summary in database when order is placed successfully
             $summary = [
                 'selected_address_id' => $selected_address_id,
                 'subtotal' => $subtotal,
@@ -160,14 +160,12 @@ class CheckoutController extends Controller
                 'shipping_fee',
                 'total'
             ));
-
         } else {
 
             // ====== Unauthenticated User ======
             session()->flash('error', 'Please login or register an account before checking out the shopping cart');
             session(['route_back_cart' => true]);
             return redirect()->route('login');
-
         }
     }
 
@@ -177,12 +175,13 @@ class CheckoutController extends Controller
      * @param Request $request
      * @return void
      */
-    public function updateShippingAddress(Request $request) {
+    public function updateShippingAddress(Request $request)
+    {
 
         $selected_address_id = $request->input('address_item_id');
         session(['shipping_addr_id' => $selected_address_id]);
 
-        return redirect()->route('checkoutCart');
+        return back()->withSuccess('Shipping address updated successfully!');
     }
 
     /**
@@ -190,7 +189,8 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function processToBilling(Request $request) {
+    public function processToBilling(Request $request)
+    {
 
         $title = 'Payment';
 
@@ -208,7 +208,7 @@ class CheckoutController extends Controller
         // check if user selected to use shipping address as billing address
         $session_billing_id = $request->session()->get('billing_address_id') ?? null;
 
-        if($session_billing_id) {
+        if ($session_billing_id) {
             $billing_address = UserAddress::find($session_billing_id);
         }
 
@@ -227,11 +227,12 @@ class CheckoutController extends Controller
      * @param Request $request
      * @return void
      */
-    public function useShippingAsBilling(Request $request) {
+    public function useShippingAsBilling(Request $request)
+    {
 
         $checked = $request->input('shipping_as_billing');
 
-        if($checked == 'on') {
+        if ($checked == 'on') {
             $summary = $request->session()->get('summary') ?? [];
             $address_id = $summary['selected_address_id'];
             $request->session()->put('billing_address_id', $address_id);
@@ -248,8 +249,8 @@ class CheckoutController extends Controller
      * @param Request $request
      * @return void
      */
-    public function showCreditCardForm(Request $request) {
-
+    public function showCreditCardForm(Request $request)
+    {
         $title = "Payment";
 
         // get cart summary from session
@@ -265,7 +266,7 @@ class CheckoutController extends Controller
         // parameter from last route()
         $route_params = $request->all();
 
-        if(isset($route_params['use_shipping_address'])) {
+        if (isset($route_params['use_shipping_address'])) {
             // if user selected shipping address as billing address
             $billing_address =
                 UserAddress::find($route_params['use_shipping_address'])->full_address() . ', ' .
@@ -286,7 +287,7 @@ class CheckoutController extends Controller
                 $valid['city'] . ', ' .
                 $valid['province'] . ', ' .
                 $valid['country'] . ', ' .
-                                $valid['postal_code'];
+                $valid['postal_code'];
         }
 
         // store the billing address in session for payment steps
@@ -307,10 +308,11 @@ class CheckoutController extends Controller
      * @param Request $request
      * @return void
      */
-    public function storeOrder(Request $request) {
+    public function storeOrder(Request $request)
+    {
 
         // credit card form information
-        if($request->input('card_type') == 'amex') {
+        if ($request->input('card_type') == 'amex') {
             $valid = $request->validate(
                 [
                     'card_holder_name' => ['required', 'string', 'max:255'],
@@ -333,7 +335,7 @@ class CheckoutController extends Controller
         }
 
         $valid['card_expiry'] = substr($valid['card_expiry'], -2) // month e.g.'08'
-                        . substr($valid['card_expiry'], -5, 2) // year e.g.'22'
+            . substr($valid['card_expiry'], -5, 2) // year e.g.'22'
         ; // result from '2022-08' to '0822'
 
         // ==== Insert order to order table ====
@@ -345,7 +347,7 @@ class CheckoutController extends Controller
 
         $session_billing = $request->session()->get('billing_address') ?? null;
 
-        if($session_billing) {
+        if ($session_billing) {
             $billing_address = $session_billing;
         } else {
             $billing_address = $shipping_address;
@@ -354,7 +356,7 @@ class CheckoutController extends Controller
         // if order has been placed
         $latest_order_id = $request->session()->get('latest_order_id') ?? null;
 
-        if($latest_order_id) {
+        if ($latest_order_id) {
 
             $request->session()->forget('latest_order_id');
 
@@ -363,21 +365,17 @@ class CheckoutController extends Controller
 
             $result = Helper::storeTransaction($request, $latest_order_id, $valid['card_number'], $response);
 
-            if($result) {
+            if ($result) {
                 // redirect to invoice
                 session()->flash('success', 'Thank you for your order!');
 
                 return redirect()->route('order-history-detail', ['id' => $latest_order_id]);
             } else {
-                session()->flash('error', 'Credit card information incorrect. Please input again.');
-
-                return redirect()->route('showCreditCardForm');
+                // redirect back to insert credit card again
+                return back()->withError('Credit card information incorrect. Please input again.');
             }
-
         } else {
             // start from placing order -> order_product -> transaction
-
-
             $order = new Order();
             $order->user_id = Auth::user()->id;
             $order->gst = floatval($summary['taxes']['gst']) * $summary['subtotal'];
@@ -390,11 +388,11 @@ class CheckoutController extends Controller
             $order->shipping_address = $shipping_address;
             $order->billing_address = $billing_address;
 
-            if($order->save()) {
+            if ($order->save()) {
                 // ===== Update OrderProduct table =====
                 $cart = $request->session()->get('cart');
 
-                foreach($cart as $key => $qty) {
+                foreach ($cart as $key => $qty) {
 
                     $product = Product::where('id', $key)->with('size')->first();
 
@@ -420,7 +418,7 @@ class CheckoutController extends Controller
 
                 $result = Helper::storeTransaction($request, $order->id, $valid['card_number'], $response);
 
-                if($result) {
+                if ($result) {
                     // redirect to invoice
                     session()->flash('success', 'Thank you for your order!');
                     // send an invoice email to user
@@ -428,16 +426,13 @@ class CheckoutController extends Controller
 
                     return redirect()->route('order-history-detail', ['id' => $order->id]);
                 } else {
-                    session()->flash('error', 'Credit card information incorrect. Please input again.');
-
-                    return redirect()->route('showCreditCardForm');
+                    // redirect back to insert credit card again
+                    return back()->withError('Credit card information incorrect. Please input again.');
                 }
-
             } else {
                 session()->flash('error', 'There is error processing the order. Please try again later, or contact our customer service. Sorry for the inconvenience caused.');
                 return redirect()->route('cartIndex');
             }
         }
-
     }
 }
