@@ -13,7 +13,7 @@
             </div>
             @else
 
-            <div class="cart_list col col-8">
+            <div class="cart_list col">
                 <!-- If cart has items -->
                 @foreach($products as $product)
                 <div class="cart_item">
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col col-4">
+                            <div class="col col-4 spac">
                                 <p>
                                     <strong>Color: </strong> 
                                     <span class="color">{{ $product->color }}</span>
@@ -104,7 +104,7 @@
                 </div>
                 @endforeach
             </div>
-            <div class="cart_info col col-3">
+            <div class="cart_info col">
                     <h2>Summary</h2>
                     <div class="subtotal"><strong>Subtotal: </strong>${{ $subtotal }} CAD</div>
                     <div class="tital_item"><strong>Items: </strong>{{ $total_qty }}</div>
