@@ -47,12 +47,11 @@
             </thead>
             <tbody>
                 @foreach ($products as $product)
-                    <tr scope="row">
+                    <tr>
                         <td>{{ $product->id }}</td>
                         <td>
                             @if ($product->product_media && count($product->product_media))
-                                <img src="{{ asset('/storage/' . $product->product_media[0]->image) }}" height="100px"
-                                    width="100px" />
+                                <img src="{{ asset('/storage/' . $product->product_media[0]->image) }}" height="100" width="100" alt="product image"/>
                             @endif
                         </td>
                         <td>{{ $product->name }}</td>

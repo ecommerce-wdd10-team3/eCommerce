@@ -82,10 +82,10 @@
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">Logout</a>
                 </li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
             </ul>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
             <!-- Mobile Navbar -->
             <div class="collapse flex-grow-1 d-lg-none" id="MobileNavBar" style="flex-basis: 100%">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">

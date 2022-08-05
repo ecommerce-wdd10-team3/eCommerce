@@ -58,7 +58,7 @@
 
                         <div class="mb-3">
                             <label for="images" class="form-label">Image</label>
-                            <input type="file" name="images[]" multiple
+                            <input id="images" type="file" name="images[]" multiple
                                 class="form-control  @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror"
                                 accept="image/*">
                             @error('images')
@@ -74,7 +74,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <textarea class="ckeditor form-control @error('description') is-invalid @enderror" id="  " name="description"
+                            <textarea id="description" class="ckeditor form-control @error('description') is-invalid @enderror" name="description"
                                 rows="3" placeholder="Enter Description">{!! old('description') !!}</textarea>
                             @error('description')
                                 <div class="invalid-feedback">
@@ -85,7 +85,7 @@
 
                         <div class="mb-3">
                             <label for="category_id" class="form-label">Category</label>
-                            <select multiple class="form-select @error('category_id') is-invalid @enderror"
+                            <select id="category_id" multiple class="form-select @error('category_id') is-invalid @enderror"
                                 name="category_id[]">
                                 @foreach ($categories as $cat)
                                     <option value="{{ $cat->id }}"
