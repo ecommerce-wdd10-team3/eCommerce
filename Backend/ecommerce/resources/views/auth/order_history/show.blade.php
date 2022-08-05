@@ -17,7 +17,7 @@
                 </aside><!-- Sidebar end -->
 
                 <!-- Order Details started -->
-                <div class="content form order" >
+                <div class="content form order">
                     <h1>{{ $title }}</h1>
                     <div id="order_history_container">
                         @if (Auth::user()->id !== $user->id)
