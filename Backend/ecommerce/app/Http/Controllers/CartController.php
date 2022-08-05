@@ -18,7 +18,7 @@ class CartController extends Controller
         $title = 'Shopping Cart';
         $session = $request->session()->get('cart') ?? [];
 
-        if($request->session()->has('shipping_addr_id')) {
+        if ($request->session()->has('shipping_addr_id')) {
             $request->session()->forget('shipping_addr_id');
         }
 
@@ -27,29 +27,29 @@ class CartController extends Controller
         $total_qty = 0;
         $disable_checkout = false;
 
-        if($session) {
+        if ($session) {
             $products = Product::whereIn('id', array_keys($session))->with(['size', 'product_media'])->get();
 
-            foreach($products as $product) {
+            foreach ($products as $product) {
                 // calc cart summary
-                $subtotal += 
+                $subtotal +=
                     floatval($product->price) * $session[$product->id];
                 $total_qty += $session[$product->id];
                 // disable checkout button when out of stock item exists
-                if($product->quantity == 0 || $product->quantity < $session[$product->id]) {
+                if ($product->quantity == 0 || $product->quantity < $session[$product->id]) {
                     $disable_checkout = true;
                 }
             }
-        } 
+        }
 
         $subtotal = number_format($subtotal, 2);
-    
+
         return view('cart/index', compact(
-            'title', 
-            'products', 
-            'session', 
-            'subtotal', 
-            'total_qty', 
+            'title',
+            'products',
+            'session',
+            'subtotal',
+            'total_qty',
             'disable_checkout'
         ));
     }
@@ -61,9 +61,10 @@ class CartController extends Controller
      * @param [type] $id product id
      * @return void
      */
-    public function create(Request $request, $id) {
+    public function create(Request $request, $id)
+    {
         $session = $request->session()->get('cart');
-        if( isset($session[$id]) ) {
+        if (isset($session[$id])) {
             $session[$id] = $session[$id] + 1;
         } else {
             $session[$id] = 1;
@@ -84,20 +85,21 @@ class CartController extends Controller
      * @param Request $request
      * @return void
      */
-    public function edit(Request $request) {
+    public function edit(Request $request)
+    {
 
         $session = $request->session()->get('cart');
         $id = $request->input('id');
         $action = $request->input('action');
 
-        if(!empty($action) && isset($session[$id])) {
-            switch($action) {
+        if (!empty($action) && isset($session[$id])) {
+            switch ($action) {
                 case 'plus':
                     $session[$id] = $session[$id] + 1;
                     session()->flash('success', 'Item quantity is increased successfully!');
                     break;
                 case 'minus':
-                    if($session[$id] == 1) {
+                    if ($session[$id] == 1) {
                         unset($session[$id]);
                         session()->flash('success', 'Item is removed from cart successfully!');
                     } else {
@@ -115,5 +117,4 @@ class CartController extends Controller
 
         return redirect()->route('cartIndex');
     }
-
 }
