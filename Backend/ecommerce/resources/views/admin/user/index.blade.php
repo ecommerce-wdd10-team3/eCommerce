@@ -84,14 +84,14 @@
                     <table class="table table-striped small">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Action</th>
+                                <th>#</th>
+                                <th>Address</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($user->user_addresses as $address)
-                                <tr scope="row">
+                                <tr>
                                     <td>{{ $address->id }}</td>
                                     <td>{{ $address->full_address() }} {{ $address->postal_code }}</td>
                                     <td>

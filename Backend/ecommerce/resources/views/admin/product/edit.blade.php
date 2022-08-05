@@ -65,7 +65,7 @@
                                     @foreach ($product->product_media as $item)
                                         <div class="d-inline-block p-2" id="div_{{ $item->id }}">
                                             <img class="img-thumbnail" width="100" height="100"
-                                                data-id="{{ $item->id }}" src="/storage/{{ $item->image }}" />
+                                                data-id="{{ $item->id }}" src="/storage/{{ $item->image }}" alt="product image" />
                                             <button type="button" class="d-block m-auto mt-2 btn btn-danger btn-sm"
                                                 data-id="{{ $item->id }}"
                                                 onclick="if(confirm('Are you sure you want to delete the image?')) onMediaDelete(event,this);">Delete</button>
@@ -74,7 +74,7 @@
                                 </div>
                                 <br />
                             @endif
-                            <input type="file" name="images[]" multiple
+                            <input id="images" type="file" name="images[]" multiple
                                 class="form-control  @error('images') is-invalid @enderror @error('images.*') is-invalid @enderror"
                                 accept="image/*">
                             @error('images')
@@ -102,7 +102,7 @@
 
                         <div class="mb-3">
                             <label for="category_id" class="form-label">Category</label>
-                            <select multiple class="form-select @error('category_id') is-invalid @enderror"
+                            <select id="category_id" multiple class="form-select @error('category_id') is-invalid @enderror"
                                 name="category_id[]">
                                 @foreach ($categories as $cat)
                                     <option value="{{ $cat->id }}"
@@ -164,6 +164,8 @@
         </div>
     </div>
 @endsection
+
+@section('footer-script')
 <script>
     function onMediaDelete(e, el) {
         const id = el.dataset.id;
@@ -185,3 +187,4 @@
         });
     }
 </script>
+@endsection

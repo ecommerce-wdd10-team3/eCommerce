@@ -43,11 +43,10 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="pages" class="form-label">Select the page</label>
-                            <select class="form-select" name="pages" aria-label="Default select example">
-                                @foreach ($pages as $page)
-                                    <option @if (old('page') == $page) selected @endif value="{{ $page }}">
-                                        {{ $page }}</option>
+                        <label for="pages" class="form-label">Select the page</label>
+                            <select id="pages" class="form-select" name="pages" aria-label="Default select example">
+                                @foreach($pages as $page)
+                                <option @if(old('page')==$page) selected @endif value="{{$page}}">{{$page}}</option>
                                 @endforeach
                             </select>
                             @error('pages')

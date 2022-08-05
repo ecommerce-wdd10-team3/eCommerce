@@ -81,21 +81,6 @@
                             @enderror
                         </p>
 
-                        <p class="col col-5 required">
-                            <input type="text" id="card_cvv" name="card_cvv" placeholder="CVV Number"
-                                value="{{ old('card_cvv') }}" />
-                            @error('card_cvv')
-                                <span class="error">{{ $message }}</span>
-                            @enderror
-                        </p>
-                        <p class="col col-7 required">
-                            <input type="month" id="card_expiry" name="card_expiry" placeholder="Expiration Date"
-                                value="{{ old('card_expiry') }}" />
-                            @error('card_expiry')
-                                <span class="error">{{ $message }}</span>
-                            @enderror
-                        </p>
-
                         <p class="highlight">* Required fields.</p>
                         <p>
                             <button class="btn btn_black">Confirm</button>

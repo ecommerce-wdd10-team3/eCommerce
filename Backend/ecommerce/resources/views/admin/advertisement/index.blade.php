@@ -6,7 +6,7 @@
 
         <div class="d-flex my-auto">
             <!-- add advertisement -->
-            <a href="/admin/advertisement/create" class="btn btn-secondary mx-2">Add a Advertisement</a></td>
+            <a href="/admin/advertisement/create" class="btn btn-secondary mx-2">Add a Advertisement</a>
 
             <!-- Search form -->
             <div class="search_form">
@@ -33,20 +33,20 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Link</th>
-                    <th scope="col">Pages</th>
-                    <th scope="col">Area</th>
-                    <th scope="col" class="action-btn">Action</th>
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Link</th>
+                    <th>Pages</th>
+                    <th>Area</th>
+                    <th class="action-btn">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($advertisements as $advertisement)
-                    <tr scope="row">
+                    <tr>
                         <td>{{ $advertisement->id }}</td>
-                        <td><img src="/storage/{{ $advertisement->image }}" height="100px" width="100px" /></td>
+                        <td><img src="/storage/{{ $advertisement->image }}" alt="image" height="100" width="100" /></td>
                         <td>{{ $advertisement->title }}</td>
                         <td><a href="{{ $advertisement->link }}" title="link">{{ $advertisement->link }}</a></td>
                         <td>{{ $advertisement->pages }}</td>

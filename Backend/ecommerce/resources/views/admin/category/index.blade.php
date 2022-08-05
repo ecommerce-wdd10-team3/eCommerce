@@ -6,7 +6,7 @@
 
         <div class="d-flex my-auto">
             <!-- add category -->
-            <a href="/admin/category/create" class="btn btn-secondary mx-2">Add a Category</a></td>
+            <a href="/admin/category/create" class="btn btn-secondary mx-2">Add a Category</a>
 
             <!-- Search form -->
             <div class="search_form">
@@ -33,18 +33,18 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Image</th>
-                    <th scope="col" class="action-btn">Action</th>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th class="action-btn">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($categories as $category)
-                    <tr scope="row">
+                    <tr>
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->title }}</td>
-                        <td><img src="/storage/{{ $category->image }}" height="100px" width="100px" /></td>
+                        <td><img src="/storage/{{ $category->image }}" alt="category image" height="100" width="100" /></td>
                         <td>
                             <a href="/admin/category/edit/{{ $category->id }}" class="btn btn-outline-primary">
                                 <i class="fas fa-pencil"></i>
