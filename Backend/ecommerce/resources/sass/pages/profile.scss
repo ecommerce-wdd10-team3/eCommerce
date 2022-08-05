@@ -13,6 +13,25 @@
         font-weight: 700;
     }
 
+    .status {
+        padding: 3px 10px;
+        border-radius: 3px;
+        font-size: 14px;
+        color: #fff;
+        &.pending {
+            background-color: $color-pending;
+        }
+        &.confirmed {
+            background-color: $color-confirmed;
+        }
+        &.delivered {
+            background-color: $color-delivered;
+        }
+        &.cancelled {
+            background-color: $color-cancelled;
+        }
+    }
+
     aside {
         text-align: right;
         padding: 50px 0;
@@ -54,7 +73,6 @@
         }
     }
     
-
     .row {
         position: relative;
 
@@ -62,23 +80,6 @@
             position: absolute;
             top: 20px;
             right: 10px;
-            padding: 3px 10px;
-            border-radius: 3px;
-            font-size: 14px;
-            color: #fff;
-
-            &.pending {
-                background-color: $color-pending;
-            }
-            &.confirmed {
-                background-color: $color-confirmed;
-            }
-            &.delivered {
-                background-color: $color-delivered;
-            }
-            &.cancelled {
-                background-color: $color-cancelled;
-            }
         }
     }
 
@@ -199,6 +200,35 @@
                 margin-bottom: 10px;
                 &:last-of-type {
                     margin-bottom: 0;
+                }
+            }
+            table {
+                width: 100%;
+                margin-top: 40px;
+
+                th,td {
+                    text-align: center;
+                    padding: 10px;
+                }
+            }
+        }
+
+        .order_container {
+            .order_heading {
+                margin-bottom: 20px;
+                > div {
+                    margin-bottom: 10px;
+                }
+            }
+
+            .invoice {
+                text-align: right;
+            }
+
+            .summary {
+                margin-top: 20px;
+                > div {
+                    margin-bottom: 10px;
                 }
             }
         }
