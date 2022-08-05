@@ -86,9 +86,9 @@
 
                     <div class="search_bar">
                         <form action="{{ route('product_list') }}" method="get" autocomplete="off" novalidate class="d-flex">
-                            <input class="form-control me-2 search" type="search" name="search" placeholder="Search Outfit" aria-label="Search"
-                                maxlength="255">&nbsp;
-                            <input type="image" src="/images/icon-magnifier.svg" alt="search icon" width="30" height="30" />
+                            <input class="form-control me-2 search" type="search" name="search" placeholder="Search Outfit" aria-label="Search" maxlength="255">
+                            &nbsp;
+                            <input type="submit" value="" style="background-image: url(/images/icon-magnifier.svg)" />
                         </form>
                     </div>
                 </div>
@@ -103,9 +103,9 @@
 
                     <div class="search_bar">
                         <form action="{{ route('product_list') }}" method="get" autocomplete="off" novalidate class="d-flex">
-                            <input class="form-control me-2 search" type="search" name="search" placeholder="Search Outfit" aria-label="Search"
-                                maxlength="255">&nbsp;
-                            <input type="image" src="/images/icon-magnifier.svg" alt="search icon" width="30" height="30" />
+                            <input class="form-control me-2 search" type="search" name="search" placeholder="Search Outfit" aria-label="Search" maxlength="255">
+                            &nbsp;
+                            <input type="submit" value="" style="background-image: url(/images/icon-magnifier.svg)" />
                         </form>
                     </div>
                 </div>

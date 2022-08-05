@@ -227,7 +227,7 @@ button {
 .icon {
     display: inline-block;
     vertical-align: top;
-    padding: 24px 5px;
+    padding: 30px 5px;
     @media only screen and (max-width: 970px) {
         padding: 24px 0;
     }
@@ -596,10 +596,16 @@ button {
                     border: none;
                     border-bottom: 1px solid $color-light;
                 }
-                input[type=image] {
+                input[type="submit"] {
                     position: absolute;
                     right: 10px;
-                    bottom: 10px;
+                    top: 50%;
+                    transform: translate(0, -50%);
+                    width: 30px;
+                    height: 30px;
+                    border: none;
+                    background-color: unset;
+                    cursor: pointer;
                 }
             }
         }
