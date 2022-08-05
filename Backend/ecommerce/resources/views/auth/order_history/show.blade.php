@@ -2,7 +2,7 @@
 
 @section('content')
     <main>
-        <div id="profile" class="container profile">
+        <div class="container profile">
             <div class="wrapper d-flex">
                 <!-- Sidebar started -->
                 <aside>
@@ -17,7 +17,7 @@
                 </aside><!-- Sidebar end -->
                 
                 <!-- Order Details started -->
-                <div class="content form order" id="profile">
+                <div class="content form order" >
                     <h1>{{ $title }}</h1>
                     <div id="order_history_container">
                         @if (Auth::user()->id !== $user->id)
