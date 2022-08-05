@@ -9,7 +9,7 @@
 
 -   <https://team3.uwpace.ca/admin>
 
-## Credentials for a regular user
+## Credentials for a Regular user
 
 -   **Account:** test@gmail.com
 -   **Password:** P@ssw0rd
