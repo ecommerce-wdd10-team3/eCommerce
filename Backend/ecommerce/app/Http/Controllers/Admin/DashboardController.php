@@ -48,6 +48,7 @@ class DashboardController extends Controller
             ->get();
         // monthly sales 
         $sales = Order::where('order_status', '=', 'delivered')
+            ->orWhere('order_status', '=', 'confirmed')
             ->selectRaw('year(created_at) year, monthname(created_at) month,count(*) as count, sum(total) as sales')
             ->groupBy('year', 'month')
             ->orderBy('year', 'desc')
