@@ -17,7 +17,7 @@
         </div>
 
         <!-- Mobile Icon Start -->
-        <div class="utils at_bar mobile">            
+        <div class="utils at_bar mobile">
             <!-- Profile start-->
             <div class="icon profile">
                 <a href="javascript:;">
@@ -37,28 +37,23 @@
                                 <li><a class="btn btn_white_no_border" href="{{ route('login') }}">Login</a></li>
                             @endif
                         @else
-                            @if(Auth::user()->admin)
+                            @if (Auth::user()->admin)
                                 <li>
-                                    <a class="btn btn_white_no_border"
-                                    href="{{ route('admin_dashboard') }}">Admin Dashboard</a>
+                                    <a class="btn btn_white_no_border" href="{{ route('admin_dashboard') }}">Admin
+                                        Dashboard</a>
                                 </li>
                             @endif
 
                             <li>
-                                <a class="btn btn_white_no_border"
-                                href="{{ route('profile') }}">Profile</a>
+                                <a class="btn btn_white_no_border" href="{{ route('profile') }}">Profile</a>
                             </li>
-                            
-<<<<<<< HEAD
                             <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-=======
-                            
->>>>>>> f88e3f0ded1d57a9f0450bf765d9add988c88530
+
                             <li>
                                 <a class="btn btn_black" href="/logout"
-                                onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                 document.getElementById('logout-form-mobile').submit();">Logout</a>
                             </li>
                         @endguest
@@ -69,17 +64,17 @@
             <!-- Profile ended-->
             <div class="icon cart">
                 <a href="{{ route('cartIndex') }}">
-                    @if($count_cart && !empty($count_cart) )
-                    <span class="count">{{ count($count_cart) }}</span>
+                    @if ($count_cart && !empty($count_cart))
+                        <span class="count">{{ count($count_cart) }}</span>
                     @endif
                     <img src="/images/icon-cart.svg" alt="cart icon" width="30" height="30" />
                 </a>
             </div>
         </div><!-- Mobile Icon End -->
-        
+
         <div class="black_layer"></div>
 
-        
+
         <!-- Menu Start -->
         <div class="menu">
 
@@ -92,9 +87,12 @@
                     </a>
 
                     <div class="search_bar">
-                        <form action="{{ route('product_list') }}" method="get" autocomplete="off" novalidate class="d-flex">
-                            <input class="form-control me-2 search" type="search" name="search" placeholder="Search Outfit" aria-label="Search" maxlength="255">
-                            <input type="submit" value="" style="background-image: url(/images/icon-magnifier.svg)" />
+                        <form action="{{ route('product_list') }}" method="get" autocomplete="off" novalidate
+                            class="d-flex">
+                            <input class="form-control me-2 search" type="search" name="search"
+                                placeholder="Search Outfit" aria-label="Search" maxlength="255">
+                            <input type="submit" value=""
+                                style="background-image: url(/images/icon-magnifier.svg)" />
                         </form>
                     </div>
                 </div>
@@ -108,13 +106,16 @@
                     </a>
 
                     <div class="search_bar">
-                        <form action="{{ route('product_list') }}" method="get" autocomplete="off" novalidate class="d-flex">
-                            <input class="form-control me-2 search" type="search" name="search" placeholder="Search Outfit" aria-label="Search" maxlength="255">
-                            <input type="submit" value="" style="background-image: url(/images/icon-magnifier.svg)" />
+                        <form action="{{ route('product_list') }}" method="get" autocomplete="off" novalidate
+                            class="d-flex">
+                            <input class="form-control me-2 search" type="search" name="search"
+                                placeholder="Search Outfit" aria-label="Search" maxlength="255">
+                            <input type="submit" value=""
+                                style="background-image: url(/images/icon-magnifier.svg)" />
                         </form>
                     </div>
                 </div>
-                
+
                 <!-- Profile start-->
                 <div class="icon profile">
                     <a href="javascript:;">
@@ -135,27 +136,32 @@
                                     <li><a class="btn btn_white_no_border" href="{{ route('login') }}">Login</a></li>
                                 @endif
                             @else
-                                @if(Auth::user()->admin)
+                                @if (Auth::user()->admin)
                                     <li>
-                                        <a class="btn btn_white_no_border"
-                                        href="{{ route('admin_dashboard') }}">Admin Dashboard</a>
+                                        <a class="btn btn_white_no_border" href="{{ route('admin_dashboard') }}">Admin
+                                            Dashboard</a>
                                     </li>
                                 @endif
 
                                 <li>
-                                    <a class="btn btn_white_no_border"
-                                    href="{{ route('profile') }}">Profile</a>
+                                    <a class="btn btn_white_no_border" href="{{ route('profile') }}">Profile</a>
                                 </li>
-                                
-<<<<<<< HEAD
-                                <form id="logout-form-desktop" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form-desktop" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
                                     @csrf
                                 </form>
-=======
->>>>>>> f88e3f0ded1d57a9f0450bf765d9add988c88530
+
                                 <li>
                                     <a class="btn btn_black" href="/logout"
-                                    onclick="event.preventDefault();
+                                        onclick="event.preventDefault();
+
+                                <form id="logout-form-desktop"
+                                        action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                        </form>
+                                <li>
+                                    <a class="btn btn_black" href="/logout"
+                                        onclick="event.preventDefault();
                                     document.getElementById('logout-form-desktop').submit();">Logout</a>
                                 </li>
                             @endguest
@@ -166,8 +172,8 @@
                 <!-- Profile ended-->
                 <div class="icon cart">
                     <a href="{{ route('cartIndex') }}">
-                        @if($count_cart && !empty($count_cart) )
-                        <span class="count">{{ count($count_cart) }}</span>
+                        @if ($count_cart && !empty($count_cart))
+                            <span class="count">{{ count($count_cart) }}</span>
                         @endif
                         <img src="/images/icon-cart.svg" alt="cart icon" width="30" height="30" />
                     </a>
@@ -181,12 +187,13 @@
                     </li>
                     @foreach ($genders as $gender)
                         <li>
-                            <a href="/{{ $gender->name }}/product" class="text-transform-capitalize">{{ $gender->name }}</a>
+                            <a href="/{{ $gender->name }}/product"
+                                class="text-transform-capitalize">{{ $gender->name }}</a>
                         </li>
                     @endforeach
                 </ul>
             </nav>
-            
+
         </div><!-- Menu End -->
 
     </div>

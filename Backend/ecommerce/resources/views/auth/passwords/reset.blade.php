@@ -11,17 +11,16 @@
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
                         <p>
-                            <input id="email" type="email" class="form-control"  name="email" placeholder="Email"
-                                value="{{ $email ?? old('email') }}"  autocomplete="email" autofocus>
+                            <input id="email" type="email" class="form-control" name="email" placeholder="Email"
+                                value="{{ $email ?? old('email') }}" autocomplete="email" autofocus>
 
                             @error('email')
                                 <span class="error">{{ $message }}</span>
                             @enderror
                         </p>
                         <p>
-                            <input id="password" type="password"
-                                class="form-control" placeholder="New Password" name="password"
-                                autocomplete="new-password">
+                            <input id="password" type="password" class="form-control" placeholder="New Password"
+                                name="password" autocomplete="new-password">
 
                             @error('password')
                                 <span class="error">{{ $message }}</span>
@@ -29,7 +28,7 @@
                         </p>
                         <p>
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                                 placeholder="Confirm Password">
+                                placeholder="Confirm Password">
 
                         </p>
                         <p>

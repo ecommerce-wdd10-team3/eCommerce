@@ -16,10 +16,12 @@ use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 |
 */
 
+// default home page
 Route::get('/', [HomeController::class, 'index']);
 
 Auth::routes();
 
+// default home page with /home path
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 require __DIR__ . '/dhruval-route.php';

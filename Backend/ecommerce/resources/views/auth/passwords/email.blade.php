@@ -18,7 +18,8 @@
 
                         <p>
 
-                            <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Input Your Email" autofocus>
+                            <input id="email" type="email" name="email" value="{{ old('email') }}"
+                                placeholder="Input Your Email" autofocus>
 
                             @error('email')
                                 <span class="error">{{ $message }}</span>

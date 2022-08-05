@@ -85,6 +85,13 @@ class ProductController extends Controller
             )
         );
     }
+    /**
+     * gender filter for product list
+     *
+     * @param [type] $gender
+     * @param Request $request
+     * @return void
+     */
     public function genderFilter($gender, Request $request)
     {
         $title = ucfirst($gender);

@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
+    /**
+     * about us page 
+     *
+     * @return void
+     */
     public function index()
     {
         $title = 'About Uptrend Group';

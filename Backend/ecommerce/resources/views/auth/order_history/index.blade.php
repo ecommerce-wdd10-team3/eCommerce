@@ -11,10 +11,10 @@
                 <!-- Sidebar started -->
                 <aside>
                     <ul>
-                        <li>    
-                            <a href="{{ route('profile') }}"  >User Info</a>
+                        <li>
+                            <a href="{{ route('profile') }}">User Info</a>
                         </li>
-                        <li>    
+                        <li>
                             <a class="active">Order History</a>
                         </li>
                     </ul>
@@ -35,7 +35,7 @@
                                     </span>
 
                                     <div class="num">Order: &#35;{{ $order->id }}</div>
-                                    
+
 
                                     <div class="order_details">
                                         <div><strong>Total: </strong>&#36;{{ $order->total }}</div>
@@ -45,7 +45,9 @@
                                             {{ $order->created_at }}
                                         </div>
                                         <div>
-                                            <a class="btn btn_white" href="{{ route('order-history-detail', ['id' => $order->id]) }}" >Order Detail</a>
+                                            <a class="btn btn_white"
+                                                href="{{ route('order-history-detail', ['id' => $order->id]) }}">Order
+                                                Detail</a>
                                         </div>
 
                                     </div>

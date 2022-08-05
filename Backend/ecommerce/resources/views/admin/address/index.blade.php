@@ -7,7 +7,8 @@
         <!-- Search form -->
         <div class="search_form">
             <form class="d-md-flex input-group w-auto my-auto" action="/admin/address" method="get">
-                <input autocomplete="off" name="search" type="search" class="form-control rounded" placeholder="Search" style="min-width: 225px" />
+                <input autocomplete="off" name="search" type="search" class="form-control rounded" placeholder="Search"
+                    style="min-width: 225px" />
                 <button class="input-group-text border-0" type="submit">
                     <i class="fas fa-search"></i></button>
             </form>
@@ -45,7 +46,8 @@
                                     role="button">Edit</a>
                             </div>
                             @if ($address->is_default_address())
-                                <div class="col-auto ps-0 ms-0" tabindex="0" data-bs-toggle="tooltip" title="Cannot Delete Default Address">
+                                <div class="col-auto ps-0 ms-0" tabindex="0" data-bs-toggle="tooltip"
+                                    title="Cannot Delete Default Address">
                                     <a href="" class="btn btn-outline-danger disabled" role="button"
                                         onclick="event.preventDefault();">Delete</a>
                                 </div>
@@ -62,8 +64,8 @@
                                 <div class="col-auto ps-0 ms-0">
                                     <a href="" class="btn btn-success"
                                         onclick="event.preventDefault();
-                                        document.getElementById('set_default_address_{{ $address->id }}').submit();"
-                                        >Set as Default</a>
+                                        document.getElementById('set_default_address_{{ $address->id }}').submit();">Set
+                                        as Default</a>
                                 </div>
                                 <form action="/admin/default-address/{{ $address->id }}" method="post" class="d-none"
                                     id="set_default_address_{{ $address->id }}">

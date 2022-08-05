@@ -1,5 +1,4 @@
 .profile {
-
     h1 {
         margin: 20px 0;
     }
@@ -58,7 +57,8 @@
                     padding: 30px 20px;
                     font-size: 18px;
                     @include transition();
-                    &.active, &:hover {
+                    &.active,
+                    &:hover {
                         background-color: $color-light;
                         color: #fff;
                     }
@@ -72,7 +72,7 @@
             }
         }
     }
-    
+
     .row {
         position: relative;
 
@@ -103,7 +103,6 @@
             right: 0;
             top: 10px;
         }
-
     }
 
     .user_info {
@@ -120,7 +119,7 @@
             }
         }
     }
-    
+
     .user_address {
         padding-top: 20px;
 
@@ -177,7 +176,6 @@
             form {
                 display: inline-block;
             }
-
         }
     }
 
@@ -206,7 +204,8 @@
                 width: 100%;
                 margin-top: 40px;
 
-                th,td {
+                th,
+                td {
                     text-align: center;
                     padding: 10px;
                 }
@@ -233,7 +232,6 @@
             }
         }
     }
-
 }
 
 .text-align-left {
@@ -247,7 +245,6 @@
 .text-center {
     text-align: center;
 }
-
 
 .min-width-20 {
     min-width: 18rem;
@@ -292,7 +289,6 @@
 .overflow-x-scroll {
     overflow-x: scroll;
 }
-
 
 .form form button.lh-btn-delete:hover {
     background-color: rgb(213, 9, 9);

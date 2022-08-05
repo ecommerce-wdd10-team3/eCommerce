@@ -65,6 +65,5 @@ class UserAddressTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
-
     }
 }

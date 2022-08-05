@@ -27,13 +27,14 @@
             margin: 0;
             width: 100%;
         }
-        
+
         .empty_cart {
             text-align: center;
             margin: 80px 0;
         }
 
-        .shipping, .order_info {
+        .shipping,
+        .order_info {
             padding: 26px 20px;
             > div {
                 margin-bottom: 10px;
@@ -46,7 +47,7 @@
 
         .shipping {
             border: 1px solid $color-light;
-           
+
             .action {
                 margin-top: 20px;
                 a {
@@ -69,14 +70,16 @@
                 }
             }
 
-            .address_list, .address_form {
+            .address_list,
+            .address_form {
                 &.hidden {
                     display: none;
                 }
             }
 
             form {
-                p, button {
+                p,
+                button {
                     margin: 0 0 10px 0;
                 }
 
@@ -86,7 +89,7 @@
                 }
             }
         }
-        
+
         .cart_item {
             padding: 20px 0;
             border-bottom: 1px solid $color-light;
@@ -101,7 +104,7 @@
                     height: auto;
                 }
             }
-    
+
             .desc {
                 position: relative;
                 @media only screen and (max-width: 767px) {
@@ -145,7 +148,7 @@
                     .color {
                         text-transform: lowercase;
                     }
-    
+
                     .size {
                         text-transform: uppercase;
                     }
@@ -231,7 +234,5 @@
                 margin: 0 auto;
             }
         }
-        
     }
-
 }

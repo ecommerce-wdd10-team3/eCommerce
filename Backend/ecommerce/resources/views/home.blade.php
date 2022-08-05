@@ -33,49 +33,50 @@
         </div><!-- End Collections -->
 
         <!-- Sliders for featured products -->
-        @if(count($featured) != 0)
-        <div class="featured">
-            <div class="wrapper">
-                <div class="heading">
-                    <div class="decorative_text">featured</div>
-                    <div class="tabs">
-                        <ul>
-                            @foreach ($genders as $gender)
-                                <li>{{ $gender->name }}</li>
-                            @endforeach
-                        </ul>
+        @if (count($featured) != 0)
+            <div class="featured">
+                <div class="wrapper">
+                    <div class="heading">
+                        <div class="decorative_text">featured</div>
+                        <div class="tabs">
+                            <ul>
+                                @foreach ($genders as $gender)
+                                    <li>{{ $gender->name }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content">
+                        @foreach ($genders as $gender)
+                            <div class="row">
+                                <div class="featured_slider">
+                                    @foreach ($featured as $item)
+                                        @if ($item->gender_id == $gender->id)
+                                            <div class="featured_item">
+                                                <div class="product_img">
+                                                    <a href="/product/{{ $item->slug }}">
+                                                        @if (isset($item->product_media) && count($item->product_media) > 0)
+                                                            <img src="{{ asset('/storage/' . $item->product_media[0]->image) }}"
+                                                                alt="{{ $item->slug }}">
+                                                        @else
+                                                            <img src="/images/product-image-not-found.jpg"
+                                                                alt="product-image-not-found">
+                                                        @endif
+                                                    </a>
+                                                </div>
+                                                <div class="title">
+                                                    <a href="/product/{{ $item->slug }}"> {{ $item->name }}</a>
+                                                </div>
+                                                <div class="price">${{ $item->price }} CAD</div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="content">
-                    @foreach ($genders as $gender)
-                        <div class="row">
-                            <div class="featured_slider">
-                                @foreach ($featured as $item)
-                                    @if ($item->gender_id == $gender->id)
-                                        <div class="featured_item">
-                                            <div class="product_img">
-                                                <a href="/product/{{ $item->slug }}">
-                                                    @if (isset($item->product_media) && count($item->product_media) > 0)
-                                                        <img src="{{ asset('/storage/' . $item->product_media[0]->image) }}"
-                                                            alt="{{ $item->slug }}">
-                                                    @else
-                                                        <img src="/images/product-image-not-found.jpg" alt="product-image-not-found">
-                                                    @endif
-                                                </a>
-                                            </div>
-                                            <div class="title">
-                                                <a href="/product/{{ $item->slug }}"> {{ $item->name }}</a>
-                                            </div>
-                                            <div class="price">${{ $item->price }} CAD</div>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div><!-- End of Sliders for featured products -->
+            </div><!-- End of Sliders for featured products -->
         @endif
 
         <!-- Service description  -->

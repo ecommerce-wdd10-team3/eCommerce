@@ -35,15 +35,15 @@ function getCurrentYear() {
  * Mobile menu slide animation
  */
 function menuMobileControl() {
-    $('.nav_bar .hamburger a').click(function(e) {
+    $('.nav_bar .hamburger a').click(function (e) {
         e.preventDefault();
-        $('.nav_bar .menu').animate({left: 0}, 500);
+        $('.nav_bar .menu').animate({ left: 0 }, 500);
         $('.nav_bar .black_layer').fadeIn();
     });
 
-    $('.nav_bar .menu .mobile_close_btn, .nav_bar .black_layer').click(function(e) {
+    $('.nav_bar .menu .mobile_close_btn, .nav_bar .black_layer').click(function (e) {
         e.preventDefault();
-        $('.nav_bar .menu').animate({left: -420}, 500);
+        $('.nav_bar .menu').animate({ left: -420 }, 500);
         $('.nav_bar .black_layer').fadeOut();
     })
 
