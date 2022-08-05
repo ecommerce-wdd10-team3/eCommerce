@@ -15,6 +15,5 @@ class ProductMediaTableSeeder extends Seeder
      */
     public function run()
     {
-
     }
 }
