@@ -2,7 +2,7 @@
 
 @section('content')
     <main>
-        <div id="profile" class="container profile">
+        <div class="container profile">
             <div class="wrapper">
                 <!-- Sidebar started -->
                 <aside>

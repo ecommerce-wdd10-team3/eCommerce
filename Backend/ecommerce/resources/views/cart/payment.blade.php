@@ -38,8 +38,8 @@
                         <input type="radio" id="visa" name="card_type" value="visa" @if(old('card_type') == 'visa') checked @endif />
                         <label for="visa">Visa</label>
 
-                        <input type="radio" id="mastercard " name="card_type" value="mastercard " @if(old('card_type') == 'mastercard') checked @endif />
-                        <label for="mastercard ">Mastercard</label>
+                        <input type="radio" id="mastercard" name="card_type" value="mastercard" @if(old('card_type') == 'mastercard') checked @endif />
+                        <label for="mastercard">Mastercard</label>
 
                         <input type="radio" id="amex" name="card_type" value="amex" @if(old('card_type') == 'amex') checked @endif />
                         <label for="amex">AMEX</label>
@@ -72,7 +72,7 @@
                         @enderror
                     </p>
                     <p class="col col-7 required">
-                        <input type="month" id="card_expiry" name="card_expiry" placeholder="Expiration Date"
+                        <input type="month" id="card_expiry" name="card_expiry" 
                             value="{{ old('card_expiry') }}" />
                         @error('card_expiry')
                             <span class="error">{{ $message }}</span>

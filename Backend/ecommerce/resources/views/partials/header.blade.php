@@ -24,6 +24,9 @@
                     <img src="/images/icon-profile.svg" alt="profile icon" width="30" height="30" />
                 </a>
                 <div class="profile_dropdown">
+                    <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                     <ul>
                         @guest
 
@@ -46,9 +49,7 @@
                                 href="{{ route('profile') }}">Profile</a>
                             </li>
                             
-                            <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+                            
                             <li>
                                 <a class="btn btn_black" href="/logout"
                                 onclick="event.preventDefault();
@@ -114,6 +115,10 @@
                         <img src="/images/icon-profile.svg" alt="profile icon" width="30" height="30" />
                     </a>
                     <div class="profile_dropdown">
+                        <form id="logout-form-desktop" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
                         <ul>
                             @guest
 
@@ -136,9 +141,6 @@
                                     href="{{ route('profile') }}">Profile</a>
                                 </li>
                                 
-                                <form id="logout-form-desktop" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
                                 <li>
                                     <a class="btn btn_black" href="/logout"
                                     onclick="event.preventDefault();
