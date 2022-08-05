@@ -2,42 +2,72 @@
 
 @section('content')
     <main>
-        <div class="container">
+        <div id="profile" class="container profile">
             <div class="wrapper d-flex">
-                <aside class="width-12 p-e-2 border-right d-block m-e-0">
-                    <a href="{{ route('profile') }}" class="d-block btn btn_white_no_border lh">User Info</a>
-                    <a href="{{ route('order-history') }}" class="d-block btn btn_black bg-black fw-bold">Order History</a>
-                </aside>
-                <div class="content form" id="profile">
-                    <h1 class="my-2">{{ $title }}</h1>
-                    <div id="order_history_container" class="my-2">
+                <!-- Sidebar started -->
+                <aside>
+                    <ul>
+                        <li>    
+                            <a href="{{ route('profile') }}"  >User Info</a>
+                        </li>
+                        <li>    
+                            <a class="active">Order History</a>
+                        </li>
+                    </ul>
+                </aside><!-- Sidebar end -->
+                
+                <!-- Order Details started -->
+                <div class="content form order" id="profile">
+                    <h1>{{ $title }}</h1>
+                    <div id="order_history_container">
                         @if (Auth::user()->id !== $user->id)
-                            <h3 class="text-align-center my-3 mx-3">You are not authorised to view this order detail. <a
-                                    href="/product" id="shopping_now">Shopping Now.</a></h3>
+                            <h3>You are not authorised to view this order detail. 
+                                <a href="/product" id="shopping_now">Shopping Now.</a></h3>
                         @else
-                            <div class="order_container mx-1 mb-5">
-                                <div class="order_heading d-flex justify-content-space-between align-items-center">
-                                    <h2 class="fw-bold mb-1">Order Status</h2>
-                                    <div><a href="" class="lh-btn no-hover text-transform-capitalize"
-                                            onclick="event.preventDefault();">{{ $order->order_status }}</a></div>
+                            <div class="order_container">
+                                <div class="order_heading">
+                                    <div>
+                                        <strong>Order Date:</strong>
+                                        {{ $order->created_at }}
+                                    </div>
+                                    <div>
+                                        <strong>Shipping address:</strong>
+                                        {{ $order->shipping_address }}
+                                    </div>
+                                    <div>
+                                        <strong>Billing address:</strong>
+                                        {{ $order->billing_address }}
+                                    </div>
+                                    <div>
+                                        <strong>Order Status: </strong>
+                                        <span class="status {{ $order->order_status }}">
+                                            {{ $order->order_status }}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="product_list overflow-x-scroll">
-                                    <table style="border-collapse: collapse">
+
+                                <div class="invoice">
+                                    <a href="{{ route('order-history-invoice', ['id' => $order->id]) }}"
+                                    class="btn btn_white" target="_blank">View Invoice</a>
+                                </div>
+                                
+                                <div class="order_details">
+                                    <table>
                                         <thead>
                                             <tr>
-                                                <th class="pe-1 pm-1 fw-bold text-black border-grey">&#35;</th>
-                                                <th class="pe-1 pm-1 fw-bold text-black border-grey min-width-20">Name</th>
-                                                <th class="pe-1 pm-1 fw-bold text-black border-grey">Size</th>
-                                                <th class="pe-1 pm-1 fw-bold text-black border-grey">Unit Price</th>
-                                                <th class="pe-1 pm-1 fw-bold text-black border-grey">Quantity</th>
-                                                <th class="pe-1 pm-1 fw-bold text-black border-grey">Price</th>
+                                                <th class="pe-1 pm-1 fw-bold border-grey">&#35;</th>
+                                                <th class="pe-1 pm-1 fw-bold border-grey">Name</th>
+                                                <th class="pe-1 pm-1 fw-bold border-grey">Size</th>
+                                                <th class="pe-1 pm-1 fw-bold border-grey">Unit Price</th>
+                                                <th class="pe-1 pm-1 fw-bold border-grey">Quantity</th>
+                                                <th class="pe-1 pm-1 fw-bold border-grey">Price</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($order->products as $key => $product)
                                                 <tr>
                                                     <td class="vertical-align-top py-1 border-grey fw-bold pe-1">{{ $key + 1 }}</td>
-                                                    <td class="vertical-align-top py-1 border-grey pe-3 min-width-20">{{ $product->pivot->product_name }}</td>
+                                                    <td class="vertical-align-top py-1 border-grey pe-3">{{ $product->pivot->product_name }}</td>
                                                     <td class="vertical-align-top py-1 border-grey pe-1">{{ $product->pivot->size }}</td>
                                                     <td class="vertical-align-top py-1 border-grey pe-1">&#36;{{ $product->pivot->unit_price }}</td>
                                                     <td class="vertical-align-top py-1 border-grey pe-1">&#215;{{ $product->pivot->quantity }}</td>
@@ -47,40 +77,27 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                    <div class="d-flex justify-content-end my-2">
-                                        <div>
-                                            <div class="mb-0_5 text-align-right"><span class="text-black fw-bold">GST:
-                                                </span>&#36;{{ $order->gst }}</div>
-                                            <div class="mb-0_5 text-align-right"><span class="text-black fw-bold">PST:
-                                                </span>&#36;{{ $order->pst }}</div>
-                                            <div class="mb-0_5 text-align-right"><span class="text-black fw-bold">HST:
-                                                </span>&#36;{{ $order->hst }}</div>
-                                            <div class="mb-0_5 text-align-right"><span class="text-black fw-bold">Subtotal:
-                                                </span>&#36;{{ $order->sub_total }}</div>
-                                            <div class="mb-0_5 text-align-right"><span class="text-black fw-bold">Shipping
-                                                    charge: </span>&#36;{{ $order->shipping_charge }}</div>
-                                            <div class="mb-0_5 text-align-right"><span class="text-black fw-bold">TOTAL:
-                                                </span>&#36;{{ $order->total }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="mb-0_5"><span class="text-black fw-bold">Order Date:
-                                        </span>{{ $order->created_at }}</div>
-                                    <div class="mb-0_5"><span class="text-black fw-bold">Shipping address:
-                                        </span>{{ $order->shipping_address }}</div>
-                                    <div class="mb-0_5"><span class="text-black fw-bold">Billing address:
-                                        </span>{{ $order->billing_address }}</div>
-                                    <div class="d-flex justify-content-end my-2">
-                                        <div>
-                                            <div class="text-align-right">
-                                                <a href="{{ route('order-history-invoice', ['id' => $order->id]) }}"
-                                                    class="lh-btn fs-1" target="_blank">View Invoice</a>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                <div class="summary">
+                                    <div class="mb-0_5 text-align-right"><strong>GST:
+                                        </strong>&#36;{{ $order->gst }}</div>
+                                    <div class="mb-0_5 text-align-right"><strong>PST:
+                                        </strong>&#36;{{ $order->pst }}</div>
+                                    <div class="mb-0_5 text-align-right"><strong>HST:
+                                        </strong>&#36;{{ $order->hst }}</div>
+                                    <div class="mb-0_5 text-align-right"><strong>Subtotal:
+                                        </strong>&#36;{{ $order->sub_total }}</div>
+                                    <div class="mb-0_5 text-align-right"><strong>Shipping
+                                            charge: </strong>&#36;{{ $order->shipping_charge }}</div>
+                                    <div class="mb-0_5 text-align-right"><strong>TOTAL:
+                                        </strong>&#36;{{ $order->total }}</div>
+                                </div>
+                                
+
                             </div>
                         @endif
                     </div>
-                </div>
+                </div><!-- Order Details End -->
             </div>
         </div>
     </main>

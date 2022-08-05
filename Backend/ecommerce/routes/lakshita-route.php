@@ -12,6 +12,9 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdvertisementController;
 use App\Http\Controllers\Admin\ShippingChargeController;
 
+/*
+ ---------  Normal User Routes -------------------------------------------
+ */
 
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
@@ -28,8 +31,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/category', [App\Http\Controllers\Admin\CategoryController::class, 'index']);
     Route::get('/admin/category/create', [App\Http\Controllers\Admin\CategoryController::class, 'create']);
     Route::post('/admin/category', [App\Http\Controllers\Admin\CategoryController::class, 'store']);
-    Route::get('/admin/category/edit/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('category_edit');
-    Route::put('/admin/category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('category_update');
+    Route::get('/admin/category/edit/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'edit']);
+    Route::put('/admin/category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
     Route::delete('/admin/category/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
 
     // Inquiry Controller
@@ -40,16 +43,17 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/advertisement', [App\Http\Controllers\Admin\AdvertisementController::class, 'index']);
     Route::get('/admin/advertisement/create', [App\Http\Controllers\Admin\AdvertisementController::class, 'create']);
     Route::post('/admin/advertisement', [App\Http\Controllers\Admin\AdvertisementController::class, 'store']);
-    Route::get('/admin/advertisement/edit/{advertisement}', [App\Http\Controllers\Admin\AdvertisementController::class, 'edit'])->name('advertisement_edit');
-    Route::put('/admin/advertisement/{id}', [App\Http\Controllers\Admin\AdvertisementController::class, 'update'])->name('advertisement_update');
+    Route::get('/admin/advertisement/edit/{advertisement}', [App\Http\Controllers\Admin\AdvertisementController::class, 'edit']);
+    Route::put('/admin/advertisement/{id}', [App\Http\Controllers\Admin\AdvertisementController::class, 'update']);
     Route::delete('/admin/advertisement/{id}', [App\Http\Controllers\Admin\AdvertisementController::class, 'destroy']);
 
     //Shipping charge CRUD
     Route::get('/admin/shipping-charge', [App\Http\Controllers\Admin\ShippingChargeController::class, 'index']);
     Route::get('/admin/shipping-charge/create', [App\Http\Controllers\Admin\ShippingChargeController::class, 'create']);
     Route::post('/admin/shipping-charge', [App\Http\Controllers\Admin\ShippingChargeController::class, 'store']);
-    Route::get('/admin/shipping-charge/edit/{shippingcharge}', [App\Http\Controllers\Admin\ShippingChargeController::class, 'edit'])->name('shippingcharge_edit');
-    Route::put('/admin/shipping-charge/{id}', [App\Http\Controllers\Admin\ShippingChargeController::class, 'update'])->name('shippingcharge_update');
+    Route::get('/admin/shipping-charge/edit/{shippingcharge}', [App\Http\Controllers\Admin\ShippingChargeController::class, 'edit']);
+    Route::put('/admin/shipping-charge/{id}', [App\Http\Controllers\Admin\ShippingChargeController::class, 'update']);
     Route::delete('/admin/shipping-charge/{id}', [App\Http\Controllers\Admin\ShippingChargeController::class, 'destroy']);
 });
+
 Route::fallback([App\Http\Controllers\PageNotFoundController::class, 'notfound']);
