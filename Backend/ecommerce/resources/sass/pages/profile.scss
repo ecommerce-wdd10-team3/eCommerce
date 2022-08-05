@@ -1,8 +1,16 @@
 .profile {
 
+    h1 {
+        margin: 20px 0;
+    }
+
     h2 {
         font-weight: 400;
         text-align: center;
+    }
+
+    .num {
+        font-weight: 700;
     }
 
     aside {
@@ -45,6 +53,34 @@
             }
         }
     }
+    
+
+    .row {
+        position: relative;
+
+        .status {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+            color: #fff;
+
+            &.pending {
+                background-color: $color-pending;
+            }
+            &.confirmed {
+                background-color: $color-confirmed;
+            }
+            &.delivered {
+                background-color: $color-delivered;
+            }
+            &.cancelled {
+                background-color: $color-cancelled;
+            }
+        }
+    }
 
     .content {
         display: inline-block;
@@ -56,16 +92,23 @@
             width: 100%;
         }
 
+        a.btn {
+            padding: 10px 16px;
+            text-decoration: none;
+        }
+
         .edit_btn {
             position: absolute;
             right: 0;
             top: 10px;
         }
+
     }
 
     .user_info {
         border-bottom: 1px solid $color-light;
         padding-bottom: 20px;
+        margin-top: 60px;
         .row {
             margin-bottom: 20px;
             .title {
@@ -95,13 +138,10 @@
             margin: 0;
         }
 
-        .btn {
-            padding: 10px 16px;
-        }
-
         .row {
             margin-bottom: 20px;
             padding: 20px 10px;
+            position: relative;
 
             &.hightlight {
                 background-color: $color-featured;
@@ -114,7 +154,7 @@
                 &:last-of-type {
                     margin-bottom: 0;
                 }
-            } 
+            }
         }
 
         .addr_content {
@@ -124,10 +164,6 @@
                 @media only screen and (max-width: 767px) {
                     text-align: left;
                 }
-            }
-
-            .num {
-                font-weight: 500;
             }
 
             .action {
@@ -143,10 +179,31 @@
 
         }
     }
-}
 
-#order_history_container {
-    max-width: 630px;
+    .order {
+        .row {
+            border-bottom: 1px solid $color-light;
+            padding: 20px 10px;
+        }
+
+        #order_history_container {
+            margin-top: 60px;
+        }
+
+        .num {
+            margin-bottom: 10px;
+        }
+
+        .order_details {
+            > div {
+                margin-bottom: 10px;
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
 }
 
 .text-align-left {
@@ -161,28 +218,6 @@
     text-align: center;
 }
 
-a#shopping_now {
-    background: rgb(17, 132, 252);
-    background: linear-gradient(
-        140deg,
-        rgba(17, 132, 252, 1) 0%,
-        rgba(131, 58, 180, 0.8477766106442577) 35%,
-        rgba(253, 29, 29, 0.8757878151260504) 75%,
-        rgba(252, 176, 69, 1) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-decoration: none;
-}
-
-.order_heading {
-    margin-bottom: 1rem;
-}
-
-.order_container {
-    padding-bottom: 1rem;
-}
 
 .min-width-20 {
     min-width: 18rem;
