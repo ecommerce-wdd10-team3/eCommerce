@@ -180,7 +180,7 @@ class CheckoutController extends Controller
         $selected_address_id = $request->input('address_item_id');
         session(['shipping_addr_id' => $selected_address_id]);
 
-        return redirect()->route('checkoutCart');
+        return back()->withSuccess('Shipping address updated successfully!');
     }
 
     /**
@@ -247,7 +247,6 @@ class CheckoutController extends Controller
      * @return void
      */
     public function showCreditCardForm(Request $request) {
-
         $title = "Payment";
 
         // get cart summary from session
@@ -367,15 +366,12 @@ class CheckoutController extends Controller
 
                 return redirect()->route('order-history-detail', ['id' => $latest_order_id]);
             } else {
-                session()->flash('error', 'Credit card information incorrect. Please input again.');
-                
-                return redirect()->route('showCreditCardForm');
+                // redirect back to insert credit card again
+                return back()->withError('Credit card information incorrect. Please input again.');
             }
 
         } else {
             // start from placing order -> order_product -> transaction
-
-
             $order = new Order();
             $order->user_id = Auth::user()->id;
             $order->gst = floatval($summary['taxes']['gst']) * $summary['subtotal'];
@@ -423,9 +419,8 @@ class CheckoutController extends Controller
                     session()->flash('success', 'Thank you for your order!');
                     return redirect()->route('order-history-detail', ['id' => $order->id]);
                 } else {
-                    session()->flash('error', 'Credit card information incorrect. Please input again.');
-
-                    return redirect()->route('showCreditCardForm');
+                    // redirect back to insert credit card again
+                    return back()->withError('Credit card information incorrect. Please input again.');
                 }
 
             } else {
