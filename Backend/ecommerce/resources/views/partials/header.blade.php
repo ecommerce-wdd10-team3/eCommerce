@@ -46,13 +46,13 @@
                                 href="{{ route('profile') }}">Profile</a>
                             </li>
                             
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                             <li>
                                 <a class="btn btn_black" href="/logout"
                                 onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">Logout</a>
+                                document.getElementById('logout-form-mobile').submit();">Logout</a>
                             </li>
                         @endguest
 
@@ -84,9 +84,9 @@
                         <img src="/images/icon-magnifier.svg" alt="search icon" width="30" height="30" />
                     </a>
 
-                    <div id="search_bar">
+                    <div class="search_bar">
                         <form action="{{ route('product_list') }}" method="get" autocomplete="off" novalidate class="d-flex">
-                            <input id="search" class="form-control me-2" type="search" name="search" placeholder="Search Outfit" aria-label="Search"
+                            <input class="form-control me-2 search" type="search" name="search" placeholder="Search Outfit" aria-label="Search"
                                 maxlength="255">&nbsp;
                             <input type="image" src="/images/icon-magnifier.svg" alt="search icon" width="30" height="30" />
                         </form>
@@ -94,8 +94,6 @@
                 </div>
             </div>
 
-            
-            
             <div class="utils desktop">
                 <!-- Search button & search bar for product search -->
                 <div class="icon search">
@@ -103,9 +101,9 @@
                         <img src="/images/icon-magnifier.svg" alt="search icon" width="30" height="30" />
                     </a>
 
-                    <div id="search_bar">
+                    <div class="search_bar">
                         <form action="{{ route('product_list') }}" method="get" autocomplete="off" novalidate class="d-flex">
-                            <input id="search" class="form-control me-2" type="search" name="search" placeholder="Search Outfit" aria-label="Search"
+                            <input class="form-control me-2 search" type="search" name="search" placeholder="Search Outfit" aria-label="Search"
                                 maxlength="255">&nbsp;
                             <input type="image" src="/images/icon-magnifier.svg" alt="search icon" width="30" height="30" />
                         </form>
@@ -140,13 +138,13 @@
                                     href="{{ route('profile') }}">Profile</a>
                                 </li>
                                 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form-desktop" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                                 <li>
                                     <a class="btn btn_black" href="/logout"
                                     onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">Logout</a>
+                                    document.getElementById('logout-form-desktop').submit();">Logout</a>
                                 </li>
                             @endguest
 

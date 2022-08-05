@@ -83,7 +83,7 @@ function searchAnimation() {
     $(".nav_bar .utils .search > a").click(function (e) {
         e.preventDefault();
 
-        $(".search #search_bar")
+        $(".search .search_bar")
             .css({
                 "z-index": 999,
                 visibility: "visible",
@@ -97,7 +97,7 @@ function searchAnimation() {
             )
             .animate(300, function () {
                 setTimeout(function () {
-                    $(".search #search_bar #search").focus();
+                    $(".search .search_bar .search").focus();
                 }, 600);
             })
             .css("pointer-events", "auto");
