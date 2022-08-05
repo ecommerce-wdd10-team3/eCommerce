@@ -2,7 +2,11 @@
 
 @section('content')
     <main>
+<<<<<<< HEAD
+        <div id="profile" class="container profile">
+=======
         <div class="container profile">
+>>>>>>> f88e3f0ded1d57a9f0450bf765d9add988c88530
             <div class="wrapper d-flex">
                 <!-- Sidebar started -->
                 <aside>
