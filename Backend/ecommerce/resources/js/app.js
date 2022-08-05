@@ -139,7 +139,7 @@ function homeFeaturedSlider() {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     infinite: true,
-                    dots: false,
+                    dots: true,
                 },
             },
         ],
