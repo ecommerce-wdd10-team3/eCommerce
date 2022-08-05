@@ -51,7 +51,7 @@
                             </p>
                         </form>
                     @else
-                    <h1 style="color: red">You are not authorised to edit other people's personal information.</h1>
+                        <h1 style="color: red">You are not authorised to edit other people's personal information.</h1>
                     @endif
                 </div>
             </div>

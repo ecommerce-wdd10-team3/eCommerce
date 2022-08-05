@@ -180,20 +180,24 @@
         .col-4 {
             width: calc((100% - 8px) / 12 * 4);
         }
-        .wrap-content{
+
+        .wrap-content {
             width: min-content;
         }
+
         @media only screen and (max-width: 767px) {
-            #order_history_container .order_container > div{
+            #order_history_container .order_container>div {
                 display: block;
             }
-            .col-4{
+
+            .col-4 {
                 padding-right: 0;
                 width: 100%;
             }
-            .wrap-content{
-            width: max-content;
-        }
+
+            .wrap-content {
+                width: max-content;
+            }
         }
     </style>
 </head>
